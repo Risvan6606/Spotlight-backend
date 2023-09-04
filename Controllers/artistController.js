@@ -36,12 +36,12 @@ const sendVerifyMail = async (name, email, otp) => {
             secure: false,
             requireTLS: true,
             auth: {
-                user: process.env.email,
-                pass: process.env.password
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
             }
         })
         const mailOptions = {
-            from: process.env.email,
+            from: process.env.EMAIL,
             to: email,
             subject: 'For verifation mail',
             html: `<p>hi${name} this is your otp${otp}`
