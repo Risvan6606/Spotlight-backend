@@ -234,6 +234,9 @@ const profile = async (req, res) => {
 // edit profile
 const editProfile = async (req, res) => {
     try {
+        console.log('CLOUD_NAME:', process.env.CLOUD_NAME);
+        console.log('API_KEY:', process.env.API_KEY);
+        console.log('API_SECRET:', process.env.API_SECRET);
         if (req.file) {
             console.log('file', req.file)
             const image = req.file.filename;
