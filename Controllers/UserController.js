@@ -24,7 +24,7 @@ var instance = new Razorpay({
 const cloudinary = require('cloudinary').v2
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
+    api_key: '327952536435156',
     api_secret: process.env.API_SECRET,
     secure: true,
 });
