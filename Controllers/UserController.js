@@ -235,6 +235,7 @@ const profile = async (req, res) => {
 const editProfile = async (req, res) => {
     try {
         if (req.file) {
+            console.log('file', req.file)
             const image = req.file.filename;
             await sharp("./uploads/userImages/" + image)
                 .resize(500, 500)
@@ -254,6 +255,7 @@ const editProfile = async (req, res) => {
 
             return res.status(200).send({ message: 'Profile Updated', success: true, data: userData })
         } else {
+            console.log('no file')
             await userModel.findByIdAndUpdate(req.body.userId,
                 {
                     $set:
@@ -265,6 +267,7 @@ const editProfile = async (req, res) => {
             res.status(200).send({ message: 'Profile updated', success: true, data: userData })
         }
     } catch (error) {
+        console.log('error edit', error)
         res.status(500).send({ message: 'somthing went wrong', success: false })
     }
 }
