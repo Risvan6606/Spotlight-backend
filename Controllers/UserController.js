@@ -24,7 +24,7 @@ var instance = new Razorpay({
 const cloudinary = require('cloudinary').v2
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
-    api_key: '327952536435156',
+    api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET,
     secure: true,
 });
@@ -243,9 +243,11 @@ const editProfile = async (req, res) => {
             await sharp("./uploads/userImages/" + image)
                 .resize(500, 500)
                 .toFile("./uploads/userProfileImages/" + image)
+            console.log('image', image)
             const data = await cloudinary.uploader.upload(
                 "./uploads/userProfileImages/" + image
             );
+            console.log('data', data)
             const cdnUrl = data.secure_url;
             await userModel.findByIdAndUpdate(req.body.userId,
                 {
